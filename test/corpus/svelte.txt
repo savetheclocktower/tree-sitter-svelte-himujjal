@@ -34,13 +34,27 @@ Dynamic Expression Attribute
             (attribute (attribute_name) (quoted_attribute_value (attribute_value)))
         )
 
-    )
+  )
     (element
         (self_closing_tag
             (tag_name)
             (attribute (attribute_name (raw_text_expr)))
         )
     )
+)
+
+==============
+Expressions inside string attribute value
+==============
+<img src="/static/{src}?dancer={dancer}" alt="{dancer} dances">
+----
+(document
+  (element
+    (start_tag (tag_name)
+      (attribute (attribute_name) (quoted_attribute_value (attribute_value (expression (raw_text_expr)) (expression (raw_text_expr)))))
+      (attribute (attribute_name) (quoted_attribute_value (attribute_value (expression (raw_text_expr)))))
+    )
+  )
 )
 
 ===============
